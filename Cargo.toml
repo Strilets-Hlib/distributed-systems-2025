@@ -10,4 +10,4 @@
 
 [workspace]
 resolver = "2"
-members = ["facade-service", "http_reader", "logging-service", "messages-service"]
+members = ["facade-service", "http_reader", "logging-service", "messages-service", "server_config"]

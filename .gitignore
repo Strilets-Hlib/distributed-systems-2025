@@ -3,3 +3,6 @@
 /facade-service/target
 Cargo.lock
 /facade-service/Cargo.lock
+/kafka-servers/server3_logs
+/kafka-servers/server1_logs
+/kafka-servers/server2_logs

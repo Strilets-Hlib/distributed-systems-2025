@@ -1,0 +1,53 @@
+cd /Users/Gleb/Desktop/Магістратура/Семестр\ 2\ 2025/Проектування\ розподілених\ систем/distributed-systems-2025
+
+tart_direct=$(pwd)
+cd "$(cat $TMPDIR/wd)"
+
+consul agent -dev -ui
+http://localhost:8500/ui
+
+cd "$(cat $TMPDIR/wd)"
+hz start --config hazelcast.xml
+
+cd "$(cat $TMPDIR/wd)"
+hz start --config hazelcast.xml
+
+cd "$(cat $TMPDIR/wd)"
+hz start --config hazelcast.xml
+
+
+
+cd "$(cat $TMPDIR/wd)"
+kafka-server-start3.10 kafka-servers/server_1.properties
+
+cd "$(cat $TMPDIR/wd)"
+kafka-server-start3.10 kafka-servers/server_2.properties
+
+cd "$(cat $TMPDIR/wd)"
+kafka-server-start3.10 kafka-servers/server_3.properties
+
+
+
+cd "$(cat $TMPDIR/wd)"
+cargo run --release -p facade-service -- --port 8362 --kafka-topic messagingQueue
+
+
+
+cd "$(cat $TMPDIR/wd)"
+cargo run --release -p messages-service -- -p 8778  --kafka-topic messagingQueue -d
+
+cd "$(cat $TMPDIR/wd)"
+cargo run --release -p messages-service -- -p 8787  --kafka-topic messagingQueue -d
+
+cd "$(cat $TMPDIR/wd)"
+cargo run --release -p messages-service -- -p 8778  --kafka-topic messagingQueue -d
+
+cd "$(cat $TMPDIR/wd)"
+cargo run --release -p logging-service -- --hazelcast-map stor -p 9898 --hazelcast-port 5701 --cluster-name lab
+
+cd "$(cat $TMPDIR/wd)"
+cargo run --release -p logging-service -- --hazelcast-map stor -p 9899 --hazelcast-port 5702  --cluster-name lab
+
+cd "$(cat $TMPDIR/wd)"
+cargo run --release -p logging-service -- --hazelcast-map stor -p 9900 --hazelcast-port 5703  --cluster-name lab
+
