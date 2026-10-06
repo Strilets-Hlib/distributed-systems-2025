@@ -1,5 +1,3 @@
-cd /Users/Gleb/Desktop/Магістратура/Семестр\ 2\ 2025/Проектування\ розподілених\ систем/distributed-systems-2025
-
 tart_direct=$(pwd)
 cd "$(cat $TMPDIR/wd)"
 
@@ -18,13 +16,13 @@ hz start --config hazelcast.xml
 
 
 cd "$(cat $TMPDIR/wd)"
-kafka-server-start3.10 kafka-servers/server_1.properties
+kafka-server-start kafka-servers/server_1.properties
 
 cd "$(cat $TMPDIR/wd)"
-kafka-server-start3.10 kafka-servers/server_2.properties
+kafka-server-start kafka-servers/server_2.properties
 
 cd "$(cat $TMPDIR/wd)"
-kafka-server-start3.10 kafka-servers/server_3.properties
+kafka-server-start kafka-servers/server_3.properties
 
 
 
